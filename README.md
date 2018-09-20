@@ -7,4 +7,4 @@ Klasse: FA66
 
 Gruppe: 4
 
-Mitgleider: Fabian Bröschki, Christoph Stumpe, Artem Ulyanovski
+Mitgleider: Fabian Bröscky, Christoph Stumpe, Artem Ulyanovski
