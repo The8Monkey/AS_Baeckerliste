@@ -1,6 +1,10 @@
 package data;
 
+import application.Backware;
+import application.Baeckerei;
+
 import java.sql.*;
+import java.util.List;
 
 
 /**
@@ -48,7 +52,7 @@ public class DatabaseManagement implements IDataManagement{
     }
 
     @Override
-    public Baecherei getBaeckerei(int id) {
+    public Baeckerei getBaeckerei(int id) {
         return null;
     }
 
@@ -78,7 +82,7 @@ public class DatabaseManagement implements IDataManagement{
     }
 
     @Override
-    public void updaterBackware(Backware backware) {
+    public void updateBackware(Backware backware) {
 
     }
 
