@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
-public class Gui  {
+public class GuiController {
     @FXML
     Button addBakery,editBakery,deleteBakery,addPastries,editPastries, deletePastries;
 
@@ -22,6 +22,9 @@ public class Gui  {
 
     @FXML
     ImageView ivOSZLogo;
+
+
+
 
 
 
