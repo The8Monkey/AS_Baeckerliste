@@ -5,7 +5,7 @@ package application;
  */
 
 public class Backware {
-    private String id;
+    private int id;
     private String bezeichnung;
 
     public Backware(String bezeichnung) {
@@ -20,7 +20,7 @@ public class Backware {
         bezeichnung = bezeichnung;
     }
 
-    public String getID() {
+    public int getID() {
         return id;
     }
 }

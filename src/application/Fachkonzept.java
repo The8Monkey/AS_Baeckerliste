@@ -51,14 +51,14 @@ public class Fachkonzept implements IFachkonzept {
     }
 
     @Override
-    public List<Backware> getBackwarenForBaeckerei(Baeckerei baeckerei) {
-        return databaseManagement.getBackwarenForBaeckerei(baeckerei.getID());
+    public void getBackwarenForBaeckerei(Baeckerei baeckerei) {
+        backwarenListe = databaseManagement.getBackwarenForBaeckerei(baeckerei.getID());
     }
 
     @Override
-    public void saveBackware(String bezeichnung) {
+    public void saveBackware(String bezeichnung, Baeckerei baeckerei) {
         backwarenListe.add(new Backware(bezeichnung));
-        //databaseManagement.saveBackware(backware);
+        //databaseManagement.saveBackware(new Backware(bezeichnung), baeckerei.getID());
     }
 
 

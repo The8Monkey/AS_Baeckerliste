@@ -12,8 +12,8 @@ public interface IFachkonzept {
     void saveBaeckerei(String Name);
     void updateBaeckerei(Baeckerei baeckerei);
     void deleteBaeckerei(int index);
-    List<Backware> getBackwarenForBaeckerei(Baeckerei baeckerei);
-    void saveBackware(String bezeichnung);
+    void getBackwarenForBaeckerei(Baeckerei baeckerei);
+    void saveBackware(String bezeichnung, Baeckerei baeckerei);
     void updateBackware(Backware backware);
     void deleteBackware(int index);
 }
