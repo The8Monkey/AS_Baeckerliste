@@ -9,12 +9,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.GuiController">
    <children>
-      <ListView layoutX="184.0" layoutY="121.0" prefHeight="287.0" prefWidth="200.0" />
+      <ListView fx:id="lvBakeries" layoutX="184.0" layoutY="121.0" prefHeight="287.0" prefWidth="200.0" />
       <ListView layoutX="563.0" layoutY="121.0" prefHeight="287.0" prefWidth="200.0" />
-      <Button layoutX="106.0" layoutY="121.0" mnemonicParsing="false" text="Hinzufügen" />
+      <Button layoutX="106.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#newBakery" text="Hinzufügen" />
       <Button layoutX="763.0" layoutY="121.0" mnemonicParsing="false" text="Hinzufügen" />
-      <Button layoutX="106.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Löschen" />
-      <Button layoutX="106.0" layoutY="155.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Bearbeiten" />
+      <Button layoutX="106.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#deleteBakery" prefHeight="25.0" prefWidth="78.0" text="Löschen" />
+      <Button layoutX="106.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#editBakery" prefHeight="25.0" prefWidth="78.0" text="Bearbeiten" />
       <Button layoutX="763.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Bearbeiten" />
       <Button layoutX="763.0" layoutY="191.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Löschen" />
       <ImageView fitHeight="150.0" fitWidth="398.0" layoutX="239.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true">

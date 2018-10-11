@@ -1,5 +1,8 @@
 package presentation;
 
+import application.Baeckerei;
+import application.Fachkonzept;
+import data.DatabaseManagement;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -14,14 +17,50 @@ import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
 public class GuiController {
+
+    //TODO ÄNDERUNG NOTWENDIG DERZEIT NUR SPEICHERADRESSE GESPEICHERT!
     @FXML
     Button addBakery,editBakery,deleteBakery,addPastries,editPastries, deletePastries;
 
     @FXML
-    ListView lvBakeries,lvPastries;
+    ListView<Baeckerei> lvBakeries;
+    @FXML
+    ListView lvPastries;
 
     @FXML
     ImageView ivOSZLogo;
+    Fachkonzept fachkonzept;
+
+    public void initialize(){
+        if(fachkonzept == null){
+            fachkonzept = new Fachkonzept(new DatabaseManagement());
+        }
+
+
+
+
+
+
+    }
+    @FXML
+    public void newBakery(){
+        Baeckerei baeckereiToAdd = new Baeckerei("deineMudda");
+        lvBakeries.getItems().add(baeckereiToAdd);
+
+    }
+    @FXML
+    public void deleteBakery(){
+        lvBakeries.getItems().remove(lvBakeries.getSelectionModel().getSelectedIndex());
+    }
+
+    @FXML
+    public void editBakery(){
+        lvBakeries.edit(lvBakeries.getSelectionModel().getSelectedIndex());
+    }
+
+
+
+
 
 
 
