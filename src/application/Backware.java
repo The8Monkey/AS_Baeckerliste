@@ -5,23 +5,22 @@ package application;
  */
 
 public class Backware {
-    private String ID;
-    private String Bezeichnung;
+    private String id;
+    private String bezeichnung;
 
-    public Backware(String ID, String bezeichnung) {
-        this.ID = ID;
-        Bezeichnung = bezeichnung;
+    public Backware(String bezeichnung) {
+        bezeichnung = bezeichnung;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
 
     public void setBezeichnung(String bezeichnung) {
-        Bezeichnung = bezeichnung;
+        bezeichnung = bezeichnung;
     }
 
     public String getID() {
-        return ID;
+        return id;
     }
 }

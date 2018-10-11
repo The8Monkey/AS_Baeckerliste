@@ -20,6 +20,14 @@ public class Fachkonzept implements IFachkonzept {
         backwarenListe = new ArrayList<>();
     }
 
+    public List<Baeckerei> getBackereienListe() {
+        return backereienListe;
+    }
+
+    public List<Backware> getBackwarenListe() {
+        return backwarenListe;
+    }
+
     @Override
     public void getBaeckereien() {
         backereienListe = databaseManagement.getBaeckerein();
@@ -27,7 +35,8 @@ public class Fachkonzept implements IFachkonzept {
 
     @Override
     public void saveBaeckerei(String name) {
-        databaseManagement.saveBaeckerei(new Baeckerei(name));
+        // databaseManagement.saveBaeckerei(new Baeckerei(name));
+        backereienListe.add(new Baeckerei(name));
     }
 
     @Override
@@ -36,8 +45,9 @@ public class Fachkonzept implements IFachkonzept {
     }
 
     @Override
-    public void deleteBaeckerei(Baeckerei baeckerei) {
-        databaseManagement.deleteBaeckerei(baeckerei);
+    public void deleteBaeckerei(int index) {
+        backereienListe.remove(index);
+        //databaseManagement.deleteBaeckerei(backereienListe.get(index));
     }
 
     @Override
@@ -46,8 +56,9 @@ public class Fachkonzept implements IFachkonzept {
     }
 
     @Override
-    public void saveBackware(Backware backware) {
-        databaseManagement.saveBackware(backware);
+    public void saveBackware(String bezeichnung) {
+        backwarenListe.add(new Backware(bezeichnung));
+        //databaseManagement.saveBackware(backware);
     }
 
 
@@ -57,8 +68,8 @@ public class Fachkonzept implements IFachkonzept {
     }
 
     @Override
-    public void deleteBackware(Backware backware) {
-        databaseManagement.deleteBackware(backware);
-
+    public void deleteBackware(int index) {
+        backwarenListe.remove(index);
+        //databaseManagement.deleteBackware(backwarenListe.get(index));
     }
 }
