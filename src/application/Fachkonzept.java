@@ -21,6 +21,7 @@ public class Fachkonzept implements IFachkonzept {
     }
 
     public List<Baeckerei> getBackereienListe() {
+        getBaeckereien();
         return backereienListe;
     }
 
@@ -35,8 +36,8 @@ public class Fachkonzept implements IFachkonzept {
 
     @Override
     public void saveBaeckerei(String name) {
-        // databaseManagement.saveBaeckerei(new Baeckerei(name));
-        backereienListe.add(new Baeckerei(name));
+        databaseManagement.saveBaeckerei(name);
+        //backereienListe.add(new Baeckerei(name));
     }
 
     @Override
@@ -58,7 +59,7 @@ public class Fachkonzept implements IFachkonzept {
     @Override
     public void saveBackware(String bezeichnung, Baeckerei baeckerei) {
         backwarenListe.add(new Backware(bezeichnung));
-        //databaseManagement.saveBackware(new Backware(bezeichnung), baeckerei.getID());
+        databaseManagement.saveBackware(bezeichnung, baeckerei);
     }
 
 

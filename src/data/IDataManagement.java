@@ -11,13 +11,12 @@ import java.util.List;
 public interface IDataManagement
 {
     List<Baeckerei> getBaeckerein();
-    void saveBaeckerei(Baeckerei baeckerei);
+    void saveBaeckerei(String name);
     Baeckerei getBaeckerei(int id);
     void updateBaeckerei(Baeckerei baeckerei);
     void deleteBaeckerei(Baeckerei baeckerei);
     List<Backware> getBackwarenForBaeckerei(int baeckerei_id);
-    void saveBackware(Backware backware);
-    Backware getBackware(int id);
+    void saveBackware(String name, Baeckerei baeckerei);
     void updateBackware(Backware backware);
     void deleteBackware(Backware backware);
 }

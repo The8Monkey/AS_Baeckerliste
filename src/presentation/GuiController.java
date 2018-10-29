@@ -35,18 +35,16 @@ public class GuiController {
         if(fachkonzept == null){
             fachkonzept = new Fachkonzept(new DatabaseManagement());
         }
-
-
-
-
-
-
     }
+
     @FXML
     public void newBakery(){
         Baeckerei baeckereiToAdd = new Baeckerei("deineMudda");
-        lvBakeries.getItems().add(baeckereiToAdd);
-
+        //lvBakeries.getItems().add(baeckereiToAdd);
+        fachkonzept.saveBaeckerei(baeckereiToAdd.getName());
+        for (Baeckerei b:fachkonzept.getBackereienListe()) {
+            lvBakeries.getItems().add(b);
+        }
     }
     @FXML
     public void deleteBakery(){

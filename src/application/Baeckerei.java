@@ -12,6 +12,11 @@ public class Baeckerei {
         Name = name;
     }
 
+    public Baeckerei(int ID, String name) {
+        this.ID = ID;
+        Name = name;
+    }
+
     public String getName() {
         return Name;
     }
