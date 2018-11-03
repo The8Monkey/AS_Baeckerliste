@@ -34,6 +34,8 @@ public class GUI extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI.fxml"));
 
+
+
         Scene scene =  new Scene(loader.load());
         primaryStage.setScene(scene);
         primaryStage.show();
