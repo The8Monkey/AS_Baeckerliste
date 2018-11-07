@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Christoph on 02.10.2018.
  */
 public class DatabaseManagement implements IDataManagement{
-    private static final String DB_URL = "jdbc:sqlite:C:/Users/fabia/IdeaProjects/AS_Baeckerliste/lib/database.sqlite";
+    private static final String DB_URL = "jdbc:sqlite:C:/IntellijWS/AS_Baeckerliste/lib/database.sqlite";
     private Connection connection;
     private static final String selectAllBeackerei = "select * from baeckerei;";
     private static final String selectByIdBeackerei = "select * from baeckerei where baeckerei_id = ?;";
@@ -66,7 +66,7 @@ public class DatabaseManagement implements IDataManagement{
         try{
                 PreparedStatement pstmt = connection.prepareStatement(insertBeackerei);
                 pstmt.setString(1, name);
-                pstmt.executeQuery();
+                pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }finally {
@@ -98,7 +98,7 @@ public class DatabaseManagement implements IDataManagement{
             PreparedStatement pstmt = connection.prepareStatement(updateBeackerei);
             pstmt.setString(1, baeckerei.getName());
             pstmt.setInt(2, baeckerei.getID());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }finally {
@@ -112,7 +112,7 @@ public class DatabaseManagement implements IDataManagement{
         try {
             PreparedStatement pstmt = connection.prepareStatement(deleteBeackerei);
             pstmt.setInt(1, baeckerei.getID());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }finally {
@@ -146,7 +146,7 @@ public class DatabaseManagement implements IDataManagement{
             PreparedStatement pstmt = connection.prepareStatement(insertBackware);
             pstmt.setString(1, name);
             pstmt.setInt(1, baeckerei.getID());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }finally {
@@ -161,7 +161,7 @@ public class DatabaseManagement implements IDataManagement{
             PreparedStatement pstmt = connection.prepareStatement(updateBackware);
             pstmt.setString(1, backware.getBezeichnung());
             pstmt.setInt(2, backware.getID());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }finally {
@@ -175,7 +175,7 @@ public class DatabaseManagement implements IDataManagement{
         try {
             PreparedStatement pstmt = connection.prepareStatement(deleteBackware);
             pstmt.setInt(1, backware.getID());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }finally {
