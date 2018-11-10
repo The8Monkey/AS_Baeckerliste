@@ -145,7 +145,7 @@ public class DatabaseManagement implements IDataManagement{
         try{
             PreparedStatement pstmt = connection.prepareStatement(insertBackware);
             pstmt.setString(1, name);
-            pstmt.setInt(1, baeckerei.getID());
+            pstmt.setInt(2, baeckerei.getID());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
