@@ -1,7 +1,6 @@
 package presentation;
 
 import application.Fachkonzept;
-import data.DatabaseManagement;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -22,11 +21,8 @@ public class AddBakeryDialogController {
     public void addNewBakery(){
         if(!tfName.getText().equals(""))  fachkonzept.saveBaeckerei(tfName.getText());
         Stage stage = (Stage) bOkay.getScene().getWindow();
-       stage.hide();
-
-
-
-    }
+        stage.hide();
+   }
 
     @FXML
     public void close(){

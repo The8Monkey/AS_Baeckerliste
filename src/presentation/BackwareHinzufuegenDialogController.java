@@ -7,11 +7,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class EditBaekeryDialogController {
+public class BackwareHinzufuegenDialogController {
+
+
     @FXML
     TextField tfName;
     @FXML
     Button bCancel, bOkay;
+
+
 
 
 
@@ -22,10 +26,10 @@ public class EditBaekeryDialogController {
     }
 
     @FXML
-    public void editBaeckerei(){
-        Baeckerei baeckereiToEdit = Fachkonzept.getInstance().getBaeckereiToEdit();
-        if(!tfName.getText().equals("") || tfName.getText()!=null){
-            baeckereiToEdit.setName(tfName.getText());
+    public void addBackware(){
+        if(!tfName.getText().equals("")  && tfName.getText() != null){
+            Baeckerei baeckereiToEdit = Fachkonzept.getInstance().getBaeckereiToEdit();
+            Fachkonzept.getInstance().saveBackware(tfName.getText(), baeckereiToEdit);
         }
         Stage stage = (Stage) bOkay.getScene().getWindow();
         stage.close();

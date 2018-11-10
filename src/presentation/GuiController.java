@@ -1,5 +1,6 @@
 package presentation;
 
+import application.Backware;
 import application.Baeckerei;
 import application.Fachkonzept;
 import data.DatabaseManagement;
@@ -33,16 +34,13 @@ public class GuiController {
     @FXML
     ListView<String> lvBakeries;
     @FXML
-    ListView lvPastries;
+    ListView<String> lvPastries;
 
     @FXML
     ImageView ivOSZLogo;
-
-
-
-
     Fachkonzept fachkonzept;
     List<Baeckerei> lBaeckerein;
+
 
 
     /***
@@ -59,7 +57,18 @@ public class GuiController {
                 lvBakeries.getItems().add(bakery.getName());
             }
         }
-
+        lvBakeries.getSelectionModel().selectedItemProperty().addListener((ChangeListener) -> {
+            Baeckerei baeckerei = findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem());
+            if(baeckerei == null){
+                baeckerei = fachkonzept.getBaeckereiToEdit();
+            }
+            List<Backware> backwaren = fachkonzept.getBackwarenForBaeckerei(baeckerei);
+            if(!backwaren.isEmpty()) {
+                for(Backware backware : backwaren){
+                    lvPastries.getItems().add(backware.getBezeichnung());
+                }
+            }
+        });
     }
 
     /***
@@ -69,16 +78,13 @@ public class GuiController {
     @FXML
     public void newBakery() throws Exception{
       Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BaeckereiHinzufügenDialog.fxml"));
-        loader.setController(new AddBakeryDialogController());
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("BaeckereiHinzufügenDialog.fxml"));
+      loader.setController(new AddBakeryDialogController());
       Parent root = loader.load();
       stage.initModality(Modality.APPLICATION_MODAL);
       stage.setScene(new Scene(root));
       stage.showAndWait();
-     refreshListView();
-
-
-
+      refreshListView();
     }
 
     /***
@@ -90,17 +96,13 @@ public class GuiController {
             fachkonzept.deleteBaeckerei(lvBakeries.getSelectionModel().getSelectedIndex());
             lvBakeries.getItems().remove(lvBakeries.getSelectionModel().getSelectedIndex());
         }
-
-
     }
 
     /**
-     * TODO: derzeit noch nicht funktionstüchtig
-     * @throws Exception
      */
     @FXML
     public void editBakery() throws Exception{
-      Baeckerei baeckereiToEdit = findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem());
+      fachkonzept.setBaeckereiToEdit(findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem()));
       Stage stage = new Stage();
       FXMLLoader loader = new FXMLLoader(getClass().getResource("BaeckereiEditDialog.fxml"));
       loader.setController(new EditBaekeryDialogController());
@@ -108,10 +110,27 @@ public class GuiController {
       stage.initModality(Modality.APPLICATION_MODAL);
       stage.setScene(new Scene(root));
       stage.showAndWait();;
+      fachkonzept.updateBaeckerei(fachkonzept.getBaeckereiToEdit());
       refreshListView();
+    }
+
+    @FXML
+    public void newBackware() throws IOException {
+        Baeckerei baeckereiToEdit = findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem());
+        if(baeckereiToEdit!=null)fachkonzept.setBaeckereiToEdit(baeckereiToEdit);
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BackwareHinzufuegenDialog.fxml"));
+        loader.setController(new BackwareHinzufuegenDialogController());
+        Parent root = loader.load();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(root));
+        stage.showAndWait();;
+        refreshListView();
 
 
     }
+
+
 
     /***
      * Hilfmethode zum finden einer Bäckerei aus der Datenquelle and hand eines Namens
@@ -134,7 +153,6 @@ public class GuiController {
      */
     public void refreshListView(){
         lvBakeries.getItems().clear();
-
         for(Baeckerei bakery : fachkonzept.getBackereienListe()){
             lvBakeries.getItems().add(bakery.getName());
         }

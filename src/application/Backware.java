@@ -9,7 +9,7 @@ public class Backware {
     private String bezeichnung;
 
     public Backware(String bezeichnung) {
-        bezeichnung = bezeichnung;
+        this.bezeichnung = bezeichnung;
     }
 
     public String getBezeichnung() {
@@ -17,7 +17,7 @@ public class Backware {
     }
 
     public void setBezeichnung(String bezeichnung) {
-        bezeichnung = bezeichnung;
+        this.bezeichnung = bezeichnung;
     }
 
     public int getID() {

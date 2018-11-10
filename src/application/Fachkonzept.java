@@ -13,6 +13,7 @@ public class Fachkonzept implements IFachkonzept {
     DatabaseManagement databaseManagement;
     List<Baeckerei> backereienListe;
     List<Backware> backwarenListe;
+    Baeckerei baeckereiToEdit;
 
 
     //Singleton-Implementation für Fabi
@@ -24,7 +25,13 @@ public class Fachkonzept implements IFachkonzept {
         return Fachkonzept.instance;
     }
 
+    public void setBaeckereiToEdit(Baeckerei baeckereiToEdit) {
+        this.baeckereiToEdit = baeckereiToEdit;
+    }
 
+    public Baeckerei getBaeckereiToEdit(){
+        return baeckereiToEdit;
+    }
 
     public Fachkonzept(DatabaseManagement databaseManagement) {
         this.databaseManagement = databaseManagement;
@@ -64,8 +71,11 @@ public class Fachkonzept implements IFachkonzept {
     }
 
     @Override
-    public void getBackwarenForBaeckerei(Baeckerei baeckerei) {
+    public List<Backware> getBackwarenForBaeckerei(Baeckerei baeckerei) {
         backwarenListe = databaseManagement.getBackwarenForBaeckerei(baeckerei.getID());
+        if(backwarenListe!=null) return backwarenListe;
+        else
+            return new ArrayList<Backware>();
     }
 
     @Override
