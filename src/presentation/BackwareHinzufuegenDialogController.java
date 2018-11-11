@@ -8,16 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class BackwareHinzufuegenDialogController {
-
-
     @FXML
     TextField tfName;
     @FXML
     Button bCancel, bOkay;
-
-
-
-
 
     @FXML
     public void close(){

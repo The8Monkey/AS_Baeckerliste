@@ -12,6 +12,11 @@ public class Backware {
         this.bezeichnung = bezeichnung;
     }
 
+    public Backware(int id, String bezeichnung) {
+        this.id = id;
+        this.bezeichnung = bezeichnung;
+    }
+
     public String getBezeichnung() {
         return bezeichnung;
     }
