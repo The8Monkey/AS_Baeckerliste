@@ -14,6 +14,7 @@ public class Fachkonzept implements IFachkonzept {
     List<Baeckerei> backereienListe;
     List<Backware> backwarenListe;
     Baeckerei baeckereiToEdit;
+    int indextOfBackwareToedit;
 
 
     //Singleton-Implementation für Fabi
@@ -27,6 +28,12 @@ public class Fachkonzept implements IFachkonzept {
 
     public void setBaeckereiToEdit(Baeckerei baeckereiToEdit) {
         this.baeckereiToEdit = baeckereiToEdit;
+    }
+    public void setIndextOfBackwareToedit(int indextOfBackwareToedit){
+        this.indextOfBackwareToedit = indextOfBackwareToedit;
+    }
+    public  int getIndextOfBackwareToedit(){
+        return indextOfBackwareToedit;
     }
 
     public Baeckerei getBaeckereiToEdit(){

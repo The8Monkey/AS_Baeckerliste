@@ -15,8 +15,8 @@
       <Button fx:id="addPastries" layoutX="763.0" layoutY="121.0" mnemonicParsing="false" onAction="#newBackware" text="Hinzufügen" />
       <Button layoutX="106.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#deleteBakery" prefHeight="25.0" prefWidth="78.0" text="Löschen" />
       <Button layoutX="106.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#editBakery" prefHeight="25.0" prefWidth="78.0" text="Bearbeiten" />
-      <Button layoutX="763.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Bearbeiten" />
-      <Button layoutX="763.0" layoutY="191.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Löschen" />
+      <Button fx:id="editPastries" layoutX="763.0" layoutY="156.0" mnemonicParsing="false" onAction="#editBackware" prefHeight="25.0" prefWidth="78.0" text="Bearbeiten" />
+      <Button fx:id="deletePastries" layoutX="763.0" layoutY="191.0" mnemonicParsing="false" onAction="#deleteBackware" prefHeight="25.0" prefWidth="78.0" text="Löschen" />
       <ImageView fitHeight="150.0" fitWidth="398.0" layoutX="239.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Logo_kurz_0.jpg" />

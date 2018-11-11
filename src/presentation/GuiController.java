@@ -58,16 +58,8 @@ public class GuiController {
             }
         }
         lvBakeries.getSelectionModel().selectedItemProperty().addListener((ChangeListener) -> {
-            Baeckerei baeckerei = findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem());
-            if(baeckerei == null){
-                baeckerei = fachkonzept.getBaeckereiToEdit();
-            }
-            List<Backware> backwaren = fachkonzept.getBackwarenForBaeckerei(baeckerei);
-            if(!backwaren.isEmpty()) {
-                for(Backware backware : backwaren){
-                    lvPastries.getItems().add(backware.getBezeichnung());
-                }
-            }
+            refreshBackwarenliste();
+
         });
     }
 
@@ -82,6 +74,7 @@ public class GuiController {
       loader.setController(new AddBakeryDialogController());
       Parent root = loader.load();
       stage.initModality(Modality.APPLICATION_MODAL);
+      stage.setTitle("Bäckerei hinzufügen");
       stage.setScene(new Scene(root));
       stage.showAndWait();
       refreshListView();
@@ -103,10 +96,12 @@ public class GuiController {
     @FXML
     public void editBakery() throws Exception{
       fachkonzept.setBaeckereiToEdit(findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem()));
+      fachkonzept.setIndextOfBackwareToedit(lvPastries.getSelectionModel().getSelectedIndex());
       Stage stage = new Stage();
       FXMLLoader loader = new FXMLLoader(getClass().getResource("BaeckereiEditDialog.fxml"));
       loader.setController(new EditBaekeryDialogController());
       Parent root = loader.load();
+      stage.setTitle("Bäckerei bearbeiten");
       stage.initModality(Modality.APPLICATION_MODAL);
       stage.setScene(new Scene(root));
       stage.showAndWait();;
@@ -117,11 +112,13 @@ public class GuiController {
     @FXML
     public void newBackware() throws IOException {
         Baeckerei baeckereiToEdit = findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem());
+        System.out.println("Baeckerei ID="+baeckereiToEdit.getID());
         if(baeckereiToEdit!=null)fachkonzept.setBaeckereiToEdit(baeckereiToEdit);
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BackwareHinzufuegenDialog.fxml"));
         loader.setController(new BackwareHinzufuegenDialogController());
         Parent root = loader.load();
+        stage.setTitle("Backware hinzufügen");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
         stage.showAndWait();;
@@ -146,6 +143,25 @@ public class GuiController {
         }
         return null;
     }
+    @FXML
+    public void deleteBackware(){
+        if(lvPastries.getSelectionModel().getSelectedItems() != null || lvPastries.getSelectionModel().getSelectedItems().equals(""))
+        fachkonzept.deleteBackware(lvPastries.getSelectionModel().getSelectedIndex());
+    }
+    @FXML
+    public void editBackware() throws IOException {
+        Baeckerei baeckereiToEdit = findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem());
+        if(baeckereiToEdit!=null)fachkonzept.setBaeckereiToEdit(baeckereiToEdit);
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BackwareEditDialog.fxml"));
+        loader.setController(new EditBackwareDialogController());
+        stage.setTitle("Backware bearbeiten");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(loader.load()));
+        stage.showAndWait();;
+        refreshListView();
+
+    }
 
 
     /**
@@ -157,18 +173,21 @@ public class GuiController {
             lvBakeries.getItems().add(bakery.getName());
         }
     }
+      public void refreshBackwarenliste(){
+            lvPastries.getItems().clear();
+            Baeckerei baeckerei = findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem());
+            if(baeckerei == null){
+                baeckerei = fachkonzept.getBaeckereiToEdit();
+            }
+            List<Backware> backwaren = fachkonzept.getBackwarenForBaeckerei(baeckerei);
+            if(!backwaren.isEmpty()) {
+                for(Backware backware : backwaren){
+                    lvPastries.getItems().add(backware.getBezeichnung());
+                }
+            }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+    }
 }
