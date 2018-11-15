@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Christoph on 02.10.2018.
  */
 public class DatabaseManagement implements IDataManagement {
-    private static final String DB_URL = "jdbc:sqlite:C:/USERS/PC/ideaProjects/AS_Baeckerliste/lib/database.sqlite";
+    private static final String DB_URL = "jdbc:sqlite:C:/USERS/USER/ideaProjects/AS_Baeckerliste/lib/database.sqlite";
     private Connection connection;
     private static final String selectAllBeackerei = "select * from baeckerei;";
     private static final String selectByIdBeackerei = "select * from baeckerei where baeckerei_id = ?;";

@@ -29,6 +29,7 @@ public class GUI extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI.fxml"));
         Scene scene = new Scene(loader.load());
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Bäckerei Organizer");
         primaryStage.show();
     }
 }

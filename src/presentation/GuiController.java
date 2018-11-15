@@ -96,7 +96,6 @@ public class GuiController {
     @FXML
     public void newBackware() throws IOException {
         Baeckerei baeckereiToEdit = findBaekereiByName(lvBakeries.getSelectionModel().getSelectedItem());
-        System.out.println("Baeckerei ID=" + baeckereiToEdit.getID());
         fachkonzept.setBaeckereiToEdit(baeckereiToEdit);
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BackwareHinzufuegenDialog.fxml"));
@@ -106,11 +105,11 @@ public class GuiController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
         stage.showAndWait();
-        refreshListView();
+        refreshBackwarenliste();
     }
 
     /***
-     * Hilfmethode zum finden einer Bäckerei aus der Datenquelle and hand eines Namens
+     * Hilfsmethode zum finden einer Bäckerei aus der Datenquelle and hand eines Namens
      * @param name
      * @return
      */
@@ -134,7 +133,6 @@ public class GuiController {
 
     @FXML
     public void deleteBackware() {
-        System.out.println(lvPastries.getSelectionModel().getSelectedItem());
         if (lvPastries.getSelectionModel().getSelectedItem() != null) {
             fachkonzept.deleteBackware(lvPastries.getSelectionModel().getSelectedIndex());
         }
@@ -163,8 +161,8 @@ public class GuiController {
         lvBakeries.getItems().clear();
         for (Baeckerei bakery : fachkonzept.getBackereienListe()) {
             lvBakeries.getItems().add(bakery.getName());
-            refreshBackwarenliste();
         }
+        refreshBackwarenliste();
     }
 
     private void refreshBackwarenliste() {

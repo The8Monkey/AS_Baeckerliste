@@ -106,6 +106,6 @@ public class Fachkonzept implements IFachkonzept {
     @Override
     public void deleteBackware(int index) {
         databaseManagement.deleteBackware(backwarenListe.get(index));
-        backereienListe.remove(index);
+        backwarenListe.remove(index);
     }
 }
